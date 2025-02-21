@@ -1,0 +1,22 @@
+{
+  "name": "ibm-cloud-telex-integration",
+  "version": "1.0.0",
+  "description": "This is a time interval integration whose function is to send spend data on an IBM Cloud account to a telex channel.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Andre",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "node-cron": "^3.0.3",
+    "nodemon": "^3.1.9"
+  }
+}
