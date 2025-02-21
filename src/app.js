@@ -10,7 +10,7 @@ export const telexIntervalIntegration = {
         app_description: "This is a time interval integration whose function is to send spend data on an IBM Cloud account to a telex channel.",
         app_logo: "https://iili.io/GF90sn.jpg.",
         app_name: "Cloud spend tracker App",
-        app_url: "https://0mdz71lq-3000.uks1.devtunnels.ms.",
+        app_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
         background_color: "#ffff",
       },
       integration_category: "Cloud Services",
@@ -29,13 +29,14 @@ export const telexIntervalIntegration = {
           default: "0 * * * *"
         },
         {
-          label: "Provide Speed",
-          type: "number",
-          required: false,
-          default: "1000"
+          label: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
+          type: "text",
+          required: true,
+          default: ""
         },
       ],
       tick_url: "https://ping.telex.im/v1/webhooks/01951581-3170-7f1d-be85-16ad2c0d6d2f",
-      target_url: "https://0mdz71lq-3000.uks1.devtunnels.ms", 
+      target_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending" 
     },
   };
+
