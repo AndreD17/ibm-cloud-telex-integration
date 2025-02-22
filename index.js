@@ -9,13 +9,12 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-
 app.get("/", (req, res) => {
     res.send("Cloud spend tracker App");
 });
 
 app.get("/telexIntervalIntegration", (req, res) => {
-    res.json(telexIntervalIntegration);
+    res.status(202).json(telexIntervalIntegration);
 });
 
 // API Endpoint: Manually Trigger Spending Data Fetch
@@ -23,7 +22,7 @@ app.get("/fetch-spending", async (req, res) => {
     console.log("📡 Manually fetching IBM Cloud spending data...");
     const spendingData = await fetchCloudSpending();
     await sendToWebhook(spendingData);
-    res.json({ message: "IBM Cloud spending data sent!", data: spendingData });
+    res.status(202).json({ message: "IBM Cloud spending data sent!", data: spendingData });
 });
 
 
@@ -41,7 +40,7 @@ app.post("/send-spending", async (req, res) => {
         console.log("📡 Sending spending data to webhook...");
         await sendToWebhook(spendingData);
 
-        res.json({ message: "Spending data sent to webhook successfully!", data: spendingData });
+        res.status(202).json({ message: "Spending data sent to webhook successfully!", data: spendingData });
     } catch (error) {
         console.error("❌ Error processing request:", error.message);
         res.status(500).json({ error: "Internal Server Error" });

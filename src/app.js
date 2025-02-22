@@ -8,10 +8,10 @@ export const telexIntervalIntegration = {
       integration_type: "Interval Integration",
       descriptions: {
         app_description: "This is a time interval integration whose function is to send spend data on an IBM Cloud account to a telex channel.",
-        app_logo: "https://iili.io/GF90sn.jpg.",
+        app_logo: "https://iili.io/GF90sn.jpg",
         app_name: "Cloud spend tracker App",
         app_url: "https://ibm-cloud-telex-integration.onrender.com",
-        background_color: "#808080",
+        background_color: "#ffff",
       },
       integration_category: "Cloud Services",
       integration_type: "interval",
@@ -21,24 +21,23 @@ export const telexIntervalIntegration = {
         "Gets spending data from IBM CLOUD.",
         "Sends spending data on Telex channel every hour.",
       ],
+      author:"Andre",
       settings: [
+        {
+          label: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
+          description: "Fetches spendind data from ibm cloud.",
+          type: "text",
+          required: true,
+          default: "{0$} spent on resources", 
+        },
         {
           label: "interval",
           type: "text",
           required: true,
           default: "0 * * * *"
         },
-        {
-          label: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
-          description: "Fetches spedind data from ibm cloud.",
-          type: "text",
-          required: true,
-          default: "{0$} spent on resources", 
-        },
       ],
-      tick_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
-      target_url: "" 
+      tick_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending/tick",
+      target_url: "https://ibm-cloud-telex-integration.onrender.com" 
     },
-  };
-
-
+  }
