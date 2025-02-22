@@ -9,21 +9,6 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-
-// Custom CORS middleware
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.some(allowed => origin.startsWith(allowed))) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-
 app.get("/", (req, res) => {
     res.status(200).json({ message: "IBM Cloud Spend Tracking API is running" });
 });
