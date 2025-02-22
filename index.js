@@ -9,12 +9,6 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-// CORS Configuration
-const allowedOrigins = [
-    "https://telex.im",
-    "https://telextest.im",
-    "https://staging.telextest.im"
-];
 
 // Custom CORS middleware
 app.use(cors({
