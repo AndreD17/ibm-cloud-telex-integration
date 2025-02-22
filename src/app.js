@@ -30,14 +30,14 @@ export const telexIntervalIntegration = {
         },
         {
           label: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending",
-          description: "Fetches spedind data from ibm cloud.",
+          description: "Fetches spendind data from an ibm cloud account.",
           type: "text",
           required: true,
           default: "{0$} spent on resources", 
         },
       ],
-      tick_url: "https://ping.telex.im/v1/webhooks/01951581-3170-7f1d-be85-16ad2c0d6d2f",
-      target_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending" 
+      tick_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending/tick",
+      target_url: "https://ping.telex.im/v1/webhooks/01951581-3170-7f1d-be85-16ad2c0d6d2f",
+      website: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending"
     },
   };
-
