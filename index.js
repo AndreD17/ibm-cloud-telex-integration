@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("Cloud spend tracker App");
+    res.status(200).json({ message: "IBM Cloud Spend Tracking API is running" });
 });
 
 app.get("/telexIntervalIntegration", (req, res) => {

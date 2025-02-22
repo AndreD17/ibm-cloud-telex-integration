@@ -14,7 +14,8 @@ app.use(express.json());
 // IBM Cloud API & Webhook URLs 
 const IBM_CLOUD_ACCOUNT_ID = process.env.IBM_CLOUD_ACCOUNT_ID;
 const IBM_CLOUD_API_KEY = process.env.IBM_CLOUD_API_KEY;
-const WEBHOOK_URL = "https://ping.telex.im/v1/webhooks/01951581-3170-7f1d-be85-16ad2c0d6d2f";
+const WEBHOOK_URL = "https://ping.telex.im/v1/webhooks/01952df2-5931-733a-8282-bd71a0b429de";
+
 
 // Token Variables
 let authToken = null;

@@ -85,6 +85,7 @@ curl -X POST http://localhost:3000/send-spending
 ![IBM Cloud Spending Integration]![alt text]
 
 ![alt text](<Screenshot (122).png>)
+![alt text](<Screenshot (125).png>)
 
 
 ## 🚀 Hosting on Render
