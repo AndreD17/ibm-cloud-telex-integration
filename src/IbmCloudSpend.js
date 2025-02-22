@@ -72,6 +72,7 @@ export const fetchCloudSpending = async () => {
     }
 };
 
+
 // Send Spending Data to Webhook
 export const sendToWebhook = async (spendingData) => {
     if (!spendingData) return;

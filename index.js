@@ -11,12 +11,12 @@ app.use(cors());
 
 
 app.get("/", (req, res) => {
-    res.send("Cloud spend tracker App");
+    res.send("Cloud Spend Monitor")
 });
 
 app.get("/telexIntervalIntegration", (req, res) => {
     res.json(telexIntervalIntegration);
-});
+})
 
 // API Endpoint: Manually Trigger Spending Data Fetch
 app.get("/fetch-spending", async (req, res) => {
@@ -27,7 +27,7 @@ app.get("/fetch-spending", async (req, res) => {
 });
 
 
-// Schedule the function to run every hour (3600000ms)********
+// Schedule the function to run every hour (3600000ms)
 setInterval(fetchCloudSpending, 3600000);
 
 app.post("/send-spending", async (req, res) => {
@@ -48,6 +48,55 @@ app.post("/send-spending", async (req, res) => {
     }
 });
 
+// Telex tick endpoint
+app.post("/tick", async (req, res) => {
+  try {
+    console.log("Tick request received:", req.body);
+
+    const { return_url } = req.body;
+     "https://ping.telex.im/v1/webhooks/01952571-a058-734b-9d5d-9db4b2df5438";
+
+    if (!return_url) {
+      return res.status(400).json({ error: "Missingreturn_url" });
+    }
+
+    // Fetch and send fixtures to Telex
+    await processAndSendData(return_url);
+
+    res.status(200).json({ message: "Fixtures sent successfully" });
+  } catch (error) {
+    console.error("Error processing tick:", error);
+    res.status(500).json({ error: "Failed to process tick" });
+  }
+});
+
+
+//send data to tick endpoint 
+app.post("/tick", async (req, res) => {
+    try {
+      console.log("⏳ Tick request received:", req.body);
+  
+      const { return_url } = req.body;
+  
+      if (!return_url) {
+        return res.status(400).json({ error: "Missing return_url" });
+      }
+  
+      const spendingData = await fetchCloudSpending();
+  
+      if (!spendingData) {
+        return res.status(500).json({ error: "Failed to fetch spending data" });
+      }
+  
+      await sendToWebhook(spendingData);
+  
+      res.status(200).json({ message: "Spending sent successfully!" });
+    } catch (error) {
+      console.error("❌ Error processing tick:", error.message);
+      res.status(500).json({ error: "Failed to process tick" });
+    }
+  });
+  
 
 app.listen(port, () => {
     console.log(`Server is listening on http://localhost:${port}`);
