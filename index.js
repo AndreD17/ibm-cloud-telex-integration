@@ -5,7 +5,7 @@ import { fetchCloudSpending, sendToWebhook } from "./src/IbmCloudSpend.js";
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -25,6 +25,10 @@ app.get("/fetch-spending", async (req, res) => {
     await sendToWebhook(spendingData);
     res.json({ message: "IBM Cloud spending data sent!", data: spendingData });
 });
+
+
+// Schedule the function to run every hour (3600000ms)********
+setInterval(fetchCloudSpending, 3600000);
 
 app.post("/send-spending", async (req, res) => {
     try {

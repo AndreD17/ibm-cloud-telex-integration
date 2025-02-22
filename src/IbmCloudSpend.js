@@ -1,15 +1,17 @@
 import express from "express";
-import axios from "axios";
 import cron from "node-cron";
 import dotenv from "dotenv";
+import axios from "axios";
 
 dotenv.config();
+
+
 const app = express();
 
 // Middleware
 app.use(express.json());
 
-// IBM Cloud API & Webhook URLs (Replace with actual values)
+// IBM Cloud API & Webhook URLs 
 const IBM_CLOUD_ACCOUNT_ID = process.env.IBM_CLOUD_ACCOUNT_ID;
 const IBM_CLOUD_API_KEY = process.env.IBM_CLOUD_API_KEY;
 const WEBHOOK_URL = "https://ping.telex.im/v1/webhooks/01951581-3170-7f1d-be85-16ad2c0d6d2f";
@@ -95,6 +97,7 @@ export const sendToWebhook = async (spendingData) => {
 // Scheduled Job: Runs every hour
 cron.schedule("0 * * * *", async () => {
     console.log("⏳ Fetching IBM Cloud spending data...");
+    require("dotenv").config();
     const spendingData = await fetchCloudSpending();
     await sendToWebhook(spendingData);
 });
