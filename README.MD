@@ -78,6 +78,11 @@ curl -X POST http://localhost:3000/send-spending
 - **GET**  http://localhost:3000/fetch-spending
 - **POST**  http://localhost:3000/send-spending
 
+--- To test url's copy and paste this links to your browser, check test channel@andreub for update or any webhook channel you add for spending details.
+
+- **GET** https://ibm-cloud-telex-integration.onrender.com/telexIntervalIntegration
+- **GET** https://ibm-cloud-telex-integration.onrender.com/fetch-spending
+
 ---
 
 ## Screenshot
