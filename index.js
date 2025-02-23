@@ -41,7 +41,7 @@ app.get("/fetch-spending", async (req, res) => {
     console.log("📡 Manually fetching IBM Cloud spending data...");
     const spendingData = await fetchCloudSpending();
     await sendToWebhook(spendingData);
-    res.status(202).json({ message: "IBM Cloud spending data sent!", data: spendingData });
+    res.status(202).json({ message: "0$ spent on IBM cloud resources!", data: spendingData });
 });
 
 
