@@ -31,10 +31,24 @@ export const telexIntervalIntegration = {
           default: "{0$} spent on resources", 
         },
         {
-          label: "interval",
-          type: "text",
+          label: "Delivery Time",
+          type: "dropdown",
           required: true,
-          default: "0 * * * *"
+          default: "0 * * * *",
+          options: [
+            "0 * * * *",
+            "5 * * * *",
+            "10 * * * *",
+            "15 * * * *",
+            "20 * * * *",
+            "25 * * * *",
+            "30 * * * *",
+            "35 * * * *",
+            "40 * * * *",
+            "45 * * * *",
+            "50 * * * *",
+            "55 * * * *"
+          ]
         },
       ],
       tick_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending/tick",
