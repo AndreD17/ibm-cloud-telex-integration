@@ -81,12 +81,15 @@ export const sendToWebhook = async (spendingData) => {
             return res.status(200).json({ message: "0$ spent on cloud resources" });
          };
          
-    const payload = {
-        message: "IBM Cloud Spending Update",
+     // Construct the payload
+     const payload = {
+        message: spendingData && Object.keys(spendingData).length > 0 
+            ? `IBM Cloud Spending Update: ${spendingData.summary || "No summary available"}`
+            : "IBM Cloud Spending Update: 0$ spent on cloud resources",
         username: "Cloud Spending Monitor",
         event_name: "Cloud Spending Check",
         status: "success",
-        summary: spendingData.summary || "No summary available",
+        summary: spendingData?.summary || "No summary available",
     };
 
     try {
