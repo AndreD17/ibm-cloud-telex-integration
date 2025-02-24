@@ -52,6 +52,6 @@ export const telexIntervalIntegration = {
         },
       ],
       tick_url: "https://ibm-cloud-telex-integration.onrender.com/fetch-spending/tick",
-      target_url: "" 
+      target_url: "https://ibm-cloud-telex-integration.onrender.com" 
     },
   }

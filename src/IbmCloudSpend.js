@@ -76,7 +76,10 @@ export const fetchCloudSpending = async () => {
 
 // Send Spending Data to Webhook
 export const sendToWebhook = async (spendingData) => {
-    if (!spendingData) return;
+    if (!spendingData)
+        {
+            return res.status(200).json({ message: "0$ spent on cloud resources" });
+         };
          
      // Construct the payload
      const payload = {
