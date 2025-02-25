@@ -14,8 +14,7 @@ app.use(express.json());
 // IBM Cloud API & Webhook URLs 
 const IBM_CLOUD_ACCOUNT_ID = process.env.IBM_CLOUD_ACCOUNT_ID;
 const IBM_CLOUD_API_KEY = process.env.IBM_CLOUD_API_KEY;
-const WEBHOOK_URL = "https://ping.telex.im/v1/webhooks/01952df2-5931-733a-8282-bd71a0b429de";
-
+const WEBHOOK_URL = "https://ping.telex.im/v1/webhooks/019538ff-8677-751e-a8fc-a7619a888f12";
 
 // Token Variables
 let authToken = null;
@@ -76,10 +75,7 @@ export const fetchCloudSpending = async () => {
 
 // Send Spending Data to Webhook
 export const sendToWebhook = async (spendingData) => {
-    if (!spendingData)
-        {
-            return res.status(200).json({ message: "0$ spent on cloud resources" });
-         };
+    if (!spendingData) return;
          
      // Construct the payload
      const payload = {

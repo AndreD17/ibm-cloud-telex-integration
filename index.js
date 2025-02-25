@@ -45,21 +45,23 @@ app.get("/fetch-spending", async (req, res) => {
 });
 
 
-// Schedule the function to run every hour (3600000ms)********
-setInterval(fetchCloudSpending, 3600000);
+// Schedule the function to run every min (60000ms)********
+setInterval(async () => {
+    console.log("⏳ Automatically fetching IBM Cloud spending data...");
+    const spendingData = await fetchCloudSpending();
+    await sendToWebhook(spendingData);
+}, 3600000);
 
 app.post("/send-spending", async (req, res) => {
     try {
         const spendingData = req.body; // Get data from request body
-
         if (!spendingData || Object.keys(spendingData).length === 0) {
             return res.status(400).json({ error: "Invalid request: No data provided" });
         }
 
         console.log("📡 Sending spending data to webhook...");
         await sendToWebhook(spendingData);
-
-        res.status(202).json({ message: "Spending data sent to webhook successfully!", data: spendingData });
+        res.status(202).json({ data: spendingData, message: "Spending data sent to webhook successfully!" });
     } catch (error) {
         console.error("❌ Error processing request:", error.message);
         res.status(500).json({ error: "Internal Server Error" });
